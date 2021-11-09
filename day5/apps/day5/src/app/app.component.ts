@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'day5';
+  counter = 1;
+  nav = ['link1','link2','link3'];
 }
