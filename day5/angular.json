@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "projects": {
+    "day5": {
+      "projectType": "application",
+      "root": "apps/day5",
+      "sourceRoot": "apps/day5/src",
+      "prefix": "day5",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/day5",
+            "index": "apps/day5/src/index.html",
+            "main": "apps/day5/src/main.ts",
+            "polyfills": "apps/day5/src/polyfills.ts",
+            "tsConfig": "apps/day5/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": ["apps/day5/src/favicon.ico", "apps/day5/src/assets"],
+            "styles": ["apps/day5/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/day5/src/environments/environment.ts",
+                  "with": "apps/day5/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "day5:build:production"
+            },
+            "development": {
+              "browserTarget": "day5:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "day5:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/day5/src/**/*.ts",
+              "apps/day5/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/day5"],
+          "options": {
+            "jestConfig": "apps/day5/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "day5-e2e": {
+      "root": "apps/day5-e2e",
+      "sourceRoot": "apps/day5-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/day5-e2e/cypress.json",
+            "devServerTarget": "day5:serve:development",
+            "tsConfig": "apps/day5-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "day5:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/day5-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["day5"]
+    }
+  }
+}
