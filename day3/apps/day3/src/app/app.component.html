@@ -1,0 +1,14 @@
+<button (click)="isBoolearnCheck = !isBoolearnCheck">CLICK ME</button>
+<day3-toggle-demo [(checked)]="checked"></day3-toggle-demo>
+<day3-toggle-demo [(checked)]="checked"></day3-toggle-demo>
+<day3-toggle-demo [(checked)]="checked"></day3-toggle-demo>
+<day3-toggle-demo [(checked)]="checked"></day3-toggle-demo>
+<day3-toggle-demo [(checked)]="checked"></day3-toggle-demo>
+<day3-toggle-demo [(checked)]="checked"></day3-toggle-demo>
+<div *ngIf="isBoolearnCheck">
+  <day3-toggle-demo [(checked)]="checked"></day3-toggle-demo>
+</div>
+<!-- <button (click)="taggeleComp.toggle()">CLICK ME</button> -->
+<button #btnbtnReferen>ĐỐI TƯỢNG THAM CHIẾU</button>
+<!-- tự động focus vào cái input trước tiên phải lấy được cái input -->
+<input #inputforcus type="text" value="xin chao anh em"/>
