@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'day6';
-  currrentIndex = 0;
+  currentIndex = 0;
 }

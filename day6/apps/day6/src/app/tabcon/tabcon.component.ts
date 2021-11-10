@@ -13,10 +13,10 @@ import { TabsChaComponent } from '../tabs-cha/tabs-cha.component';
   `]
 })
 export class TabconComponent implements OnInit {
-  @Input() title!:string;
+  @Input() title?:string;
   @ViewChild(TemplateRef , {static: true}) panelBody!: TemplateRef<unknown>;
   constructor(private tabCha: TabsChaComponent) { }
-  ngOnInit(){
+  ngOnInit():void{
     this.tabCha.addTab(this);
   }
 

@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TabconComponent } from '../tabcon/tabcon.component';
 
 @Component({
   selector: 'day6-tabs-cha',
   template: `
     <div class="tab-header">
-      <div class="tab-header-item" *ngFor="let tab of tabscon;let idx = index" (click)="activeIndexChange.emit(idx)">
+      <div class="tab-header-item" *ngFor="let tab of tabscon;let idx = index" (click)="selectActive(idx)">
         {{tab.title}}
         <button (click)="removeTab(tab)">X</button>
       </div>
@@ -25,7 +25,11 @@ import { TabconComponent } from '../tabcon/tabcon.component';
 export class TabsChaComponent {
   tabscon: TabconComponent[] = [];
   @Input() activeIndex = 0;
-  @Input() activeIndexChange:EventEmitter<number> = new EventEmitter<number>();
+  @Output() activeIndexChange = new EventEmitter<number>();
+  selectActive(idx: number){
+    this.activeIndex = idx;
+    this.activeIndexChange.emit(idx);
+  }
   addTab (tab: TabconComponent){
     this.tabscon = [...this.tabscon , tab];
   }
