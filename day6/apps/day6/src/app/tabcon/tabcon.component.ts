@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ContentChild, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { TabsChaComponent } from '../tabs-cha/tabs-cha.component';
 
 @Component({
@@ -15,8 +15,10 @@ import { TabsChaComponent } from '../tabs-cha/tabs-cha.component';
 export class TabconComponent implements OnInit {
   @Input() title?:string;
   @ViewChild(TemplateRef , {static: true}) panelBody!: TemplateRef<unknown>;
+  @ContentChild(TemplateRef,{static:true}) explictBody!: TemplateRef<unknown>;
   constructor(private tabCha: TabsChaComponent) { }
   ngOnInit():void{
+    console.log(this.explictBody);
     this.tabCha.addTab(this);
   }
 

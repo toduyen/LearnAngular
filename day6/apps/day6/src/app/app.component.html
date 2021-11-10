@@ -1,10 +1,16 @@
 <day6-tabs-cha [(activeIndex)]="currentIndex">
-  <day6-tabcon title="tab 1">First tab content 1</day6-tabcon>
-  <day6-tabcon title="tab 2">First tab content 2</day6-tabcon>
-  <day6-tabcon title="tab 3">First tab content 3</day6-tabcon>
-  <day6-tabcon title="Two tab">First tab content 4</day6-tabcon>
-  <day6-tabcon title="One tab">First tab content 5</day6-tabcon>
-  <day6-tabcon title="Weekend tab">First tab content 6</day6-tabcon>
+  <day6-tabcon title="tab 1">
+      <ng-template day6TabPanel>
+        First tab content 1
+        <day6-couter></day6-couter>
+      </ng-template>
+  </day6-tabcon>
+  <day6-tabcon title="tab 2">First tab content 2
+    <day6-couter></day6-couter>
+  </day6-tabcon>
+  <day6-tabcon title="tab 3">First tab content 3
+    <day6-couter></day6-couter>
+  </day6-tabcon>
 </day6-tabs-cha>
 
 <day6-tabsbootstrap [(activeIndex)]="currentIndex">
