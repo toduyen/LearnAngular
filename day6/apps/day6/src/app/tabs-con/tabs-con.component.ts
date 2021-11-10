@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'day6-tabs-con',
-  templateUrl: './tabs-con.component.html',
-  styleUrls: ['./tabs-con.component.scss']
+  template: `
+    <ng-template>
+      <ng-content></ng-content>
+    </ng-template>
+  `,
+  styles: [``],
 })
-export class TabsConComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class TabsConComponent {}
