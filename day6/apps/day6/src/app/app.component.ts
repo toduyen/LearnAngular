@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'day6';
   currentIndex = 0;
+  showTabFoud = false;
 }

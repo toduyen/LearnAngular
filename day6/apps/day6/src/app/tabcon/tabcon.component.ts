@@ -1,4 +1,4 @@
-import { Component, ContentChild, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ContentChild, Input, OnInit, TemplateRef, ViewChild , OnDestroy } from '@angular/core';
 import { TabPanelDirective } from '../tab-panel.directive';
 import { TabsChaComponent } from '../tabs-cha/tabs-cha.component';
 
@@ -13,7 +13,7 @@ import { TabsChaComponent } from '../tabs-cha/tabs-cha.component';
 
   `]
 })
-export class TabconComponent implements OnInit {
+export class TabconComponent implements OnInit , OnDestroy {
   @Input() title?:string;
   @ViewChild(TemplateRef , {static: true}) implicitbody!: TemplateRef<unknown>;
   @ContentChild(TabPanelDirective,{static:true , read: TemplateRef}) explictBody!: TemplateRef<unknown>;
@@ -25,8 +25,9 @@ export class TabconComponent implements OnInit {
   }
 
   ngOnInit(){
-    console.log(this.explictBody);
     this.tabCha.addTab(this);
   }
-
+  ngOnDestroy(){
+    this.tabCha.removeTab(this);
+  }
 }

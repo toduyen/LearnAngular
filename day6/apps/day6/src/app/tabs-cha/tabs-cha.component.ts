@@ -1,4 +1,4 @@
-import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList  } from '@angular/core';
 import { TabconComponent } from '../tabcon/tabcon.component';
 
 @Component({
@@ -22,10 +22,16 @@ import { TabconComponent } from '../tabcon/tabcon.component';
 
   `]
 })
-export class TabsChaComponent {
+// you implement AfterContentInit vô thì mới có thể dùng ngAfterContentInit
+export class TabsChaComponent implements AfterContentInit {
   tabscon: TabconComponent[] = [];
   @Input() activeIndex = 0;
   @Output() activeIndexChange = new EventEmitter<number>();
+  @ContentChildren(TabconComponent) tabConsLs!: QueryList<TabconComponent>;
+  ngAfterContentInit(){
+    this.tabConsLs.changes.subscribe(console.log);
+    console.log(this.tabConsLs)
+  }
   selectActive(idx: number){
     this.activeIndex = idx;
     this.activeIndexChange.emit(idx);

@@ -1,3 +1,4 @@
+<button type="button" class="btn btn-primary" (click)="showTabFoud = !showTabFoud">Show tab 4</button>
 <day6-tabs-cha [(activeIndex)]="currentIndex">
   <day6-tabcon title="tab 1">
     <ng-template day6TabPanel>
@@ -37,7 +38,7 @@
       <day6-couter></day6-couter>
     </ng-template>
   </day6-tabcon>
-  <day6-tabcon title="tab 3">
+  <day6-tabcon title="tab 3" *ngIf="showTabFoud">
     <ng-template day6TabPanel>
       First tab content 3
       <br />
