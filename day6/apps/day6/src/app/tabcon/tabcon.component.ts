@@ -1,4 +1,5 @@
 import { Component, ContentChild, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { TabPanelDirective } from '../tab-panel.directive';
 import { TabsChaComponent } from '../tabs-cha/tabs-cha.component';
 
 @Component({
@@ -14,10 +15,16 @@ import { TabsChaComponent } from '../tabs-cha/tabs-cha.component';
 })
 export class TabconComponent implements OnInit {
   @Input() title?:string;
-  @ViewChild(TemplateRef , {static: true}) panelBody!: TemplateRef<unknown>;
-  @ContentChild(TemplateRef,{static:true}) explictBody!: TemplateRef<unknown>;
+  @ViewChild(TemplateRef , {static: true}) implicitbody!: TemplateRef<unknown>;
+  @ContentChild(TabPanelDirective,{static:true , read: TemplateRef}) explictBody!: TemplateRef<unknown>;
+
   constructor(private tabCha: TabsChaComponent) { }
-  ngOnInit():void{
+
+  get panelBody():TemplateRef<unknown>{
+    return this.explictBody || this.implicitbody;
+  }
+
+  ngOnInit(){
     console.log(this.explictBody);
     this.tabCha.addTab(this);
   }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-const a = 1;
+let _count = 1;
 @Component({
   selector: 'day6-couter',
   template: `
@@ -10,5 +10,5 @@ const a = 1;
   `]
 })
 export class CouterComponent  {
-  counter:number = a + 1;
+  counter:number = _count++;
 }
