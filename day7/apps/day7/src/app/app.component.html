@@ -16,3 +16,9 @@
 <p>{{userInfo | json}}</p>
 <!-- <p>{{interval$ | async}}</p> -->
 <p>{{address | formatAddressNow}}</p>
+<ul>
+  <li *ngFor="let x of botterWine">{{x.name}} -- {{x.age}}</li>
+</ul>
+<ul>
+  <li *ngFor="let x of botterWine | uongruou">{{x.name}} -- {{x.age}}</li>
+</ul>
