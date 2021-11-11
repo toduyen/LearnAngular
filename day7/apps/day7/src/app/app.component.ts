@@ -60,4 +60,9 @@ export class AppComponent {
       age: 19,
     },
   ];
+  btnPushUser(){
+     console.log('click me');
+    this.botterWine = [...this.botterWine , {name: 'tuandeptrai',age:24}]
+  }
 }
+
